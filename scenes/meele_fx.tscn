@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://bphvso0fuweys"]
+
+[ext_resource type="Script" path="res://scrips/meele_fx.gd" id="1_51xga"]
+[ext_resource type="Texture2D" uid="uid://cs2vqbgy8ytme" path="res://sheets/Meele_effec_sheett.png" id="1_u7o64"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mrmmj"]
+size = Vector2(36, 47)
+
+[sub_resource type="Animation" id="Animation_r4jgb"]
+resource_name = "Meele"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_7te4u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ejio"]
+_data = {
+"Meele": SubResource("Animation_r4jgb"),
+"RESET": SubResource("Animation_7te4u")
+}
+
+[node name="meele_fx" type="Area2D"]
+collision_layer = 5
+collision_mask = 3
+script = ExtResource("1_51xga")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7, 0)
+texture = ExtResource("1_u7o64")
+hframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(18, -2.5)
+shape = SubResource("RectangleShape2D_mrmmj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6ejio")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

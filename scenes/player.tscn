@@ -1,0 +1,362 @@
+[gd_scene load_steps=37 format=3 uid="uid://cc31rsd064j6h"]
+
+[ext_resource type="Script" path="res://scrips/player.gd" id="1_lkwo7"]
+[ext_resource type="PackedScene" uid="uid://dg2v4f0d1e1lo" path="res://scenes/bullet.tscn" id="2_tmisj"]
+[ext_resource type="Texture2D" uid="uid://djjo0ejh7xlnf" path="res://sheets/Mc_sheet._no_l_idllepng.png" id="8_7kt1o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f5qh5"]
+radius = 9.0
+height = 36.0
+
+[sub_resource type="Animation" id="Animation_gqh6j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:max_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [400]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:acceleration")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [60]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:can_be_hurt")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_bo71h"]
+resource_name = "doge"
+length = 0.4
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:max_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [400, 1000, 400]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:acceleration")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [60, 1000, 60]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:can_be_hurt")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.001, 0.38),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_tvpyd"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_2qocu"]
+resource_name = "meele"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_f7l5w"]
+resource_name = "run"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_pxu01"]
+resource_name = "shoot"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [20, 21, 22, 23, 24, 25]
+}
+
+[sub_resource type="Animation" id="Animation_nxytl"]
+resource_name = "shooting"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [23, 24, 25]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1t8gw"]
+_data = {
+"RESET": SubResource("Animation_gqh6j"),
+"doge": SubResource("Animation_bo71h"),
+"idle": SubResource("Animation_tvpyd"),
+"meele": SubResource("Animation_2qocu"),
+"run": SubResource("Animation_f7l5w"),
+"shoot": SubResource("Animation_pxu01"),
+"shooting": SubResource("Animation_nxytl")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gkxyq"]
+animation = &"doge"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gom1o"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rxwr5"]
+animation = &"meele"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2ijpe"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hvq6x"]
+animation = &"shoot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ml5db"]
+animation = &"shooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l4xuw"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u6r8l"]
+advance_mode = 2
+advance_condition = &"is_run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2o3bq"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3thvg"]
+advance_mode = 2
+advance_condition = &"is_doge"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ccswu"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"is_run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uv2qh"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dqvor"]
+advance_mode = 2
+advance_condition = &"is_doge"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lmy8k"]
+advance_mode = 2
+advance_condition = &"is_meele"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_62rox"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tm2xs"]
+advance_mode = 2
+advance_condition = &"is_meele"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1hwr5"]
+advance_mode = 2
+advance_condition = &"is_shooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_se187"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"is_shoot"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0yc1s"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hmbno"]
+advance_mode = 2
+advance_condition = &"is_run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ij7tp"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pyump"]
+advance_mode = 2
+advance_condition = &"is_doge"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jgftm"]
+advance_mode = 2
+advance_condition = &"is_doge"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bqyf1"]
+states/End/position = Vector2(1311, 100)
+states/doge/node = SubResource("AnimationNodeAnimation_gkxyq")
+states/doge/position = Vector2(340, 416)
+states/idle/node = SubResource("AnimationNodeAnimation_gom1o")
+states/idle/position = Vector2(641, 71)
+states/meele/node = SubResource("AnimationNodeAnimation_rxwr5")
+states/meele/position = Vector2(661, 272)
+states/run/node = SubResource("AnimationNodeAnimation_2ijpe")
+states/run/position = Vector2(834, 336)
+states/shoot/node = SubResource("AnimationNodeAnimation_hvq6x")
+states/shoot/position = Vector2(954, 95)
+states/shooting/node = SubResource("AnimationNodeAnimation_ml5db")
+states/shooting/position = Vector2(1081, 222)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_l4xuw"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_u6r8l"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_2o3bq"), "run", "doge", SubResource("AnimationNodeStateMachineTransition_3thvg"), "doge", "run", SubResource("AnimationNodeStateMachineTransition_ccswu"), "doge", "idle", SubResource("AnimationNodeStateMachineTransition_uv2qh"), "idle", "doge", SubResource("AnimationNodeStateMachineTransition_dqvor"), "idle", "meele", SubResource("AnimationNodeStateMachineTransition_lmy8k"), "meele", "idle", SubResource("AnimationNodeStateMachineTransition_62rox"), "run", "meele", SubResource("AnimationNodeStateMachineTransition_tm2xs"), "run", "shoot", SubResource("AnimationNodeStateMachineTransition_1hwr5"), "shoot", "shooting", SubResource("AnimationNodeStateMachineTransition_se187"), "shooting", "idle", SubResource("AnimationNodeStateMachineTransition_0yc1s"), "shooting", "run", SubResource("AnimationNodeStateMachineTransition_hmbno"), "idle", "shoot", SubResource("AnimationNodeStateMachineTransition_ij7tp"), "shooting", "doge", SubResource("AnimationNodeStateMachineTransition_pyump"), "meele", "doge", SubResource("AnimationNodeStateMachineTransition_jgftm")]
+graph_offset = Vector2(82, 39)
+
+[node name="player" type="CharacterBody2D" groups=["Player"]]
+y_sort_enabled = true
+position = Vector2(0, -1)
+collision_mask = 27
+motion_mode = 1
+slide_on_ceiling = false
+script = ExtResource("1_lkwo7")
+can_be_hurt = false
+bullet = ExtResource("2_tmisj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2(0, -31)
+zoom = Vector2(3, 3)
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -31)
+texture = ExtResource("8_7kt1o")
+hframes = 26
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -26)
+shape = SubResource("CapsuleShape2D_f5qh5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1t8gw")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1t8gw")
+}
+tree_root = SubResource("AnimationNodeStateMachine_bqyf1")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/idle = false
+parameters/conditions/is_doge = false
+parameters/conditions/is_meele = false
+parameters/conditions/is_run = false
+parameters/conditions/is_shoot = false
+parameters/conditions/is_shooting = false
+
+[node name="muzzle" type="Node2D" parent="."]
+position = Vector2(30, -37)
+
+[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]

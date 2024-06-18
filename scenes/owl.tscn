@@ -1,0 +1,456 @@
+[gd_scene load_steps=60 format=3 uid="uid://bvua87lhh0wrq"]
+
+[ext_resource type="Texture2D" uid="uid://cluwrrkg032a7" path="res://sheets/Sowa_sheet.png" id="1_vvrl0"]
+[ext_resource type="Script" path="res://scrips/owl.gd" id="1_ylmtn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_up6hf"]
+size = Vector2(52, 107)
+
+[sub_resource type="Animation" id="Animation_a1qoa"]
+resource_name = "Idlle"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_o513o"]
+resource_name = "Move_L"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [30, 31, 32, 33, 34, 35, 36, 37]
+}
+
+[sub_resource type="Animation" id="Animation_p4wtq"]
+resource_name = "Move_L_con"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35, 36, 37]
+}
+
+[sub_resource type="Animation" id="Animation_vs4e0"]
+resource_name = "Move_R"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [45, 46, 47, 48, 49, 50, 51, 52]
+}
+
+[sub_resource type="Animation" id="Animation_fu5i2"]
+resource_name = "Move_R_con"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [47, 48, 49, 50, 51, 52]
+}
+
+[sub_resource type="Animation" id="Animation_p2y0t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="Animation" id="Animation_kjv60"]
+resource_name = "Recover"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [11, 12, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_deuqm"]
+resource_name = "Riffle"
+length = 0.75
+step = 0.07
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.21, 0.28, 0.35, 0.42, 0.49, 0.56, 0.63, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0), Vector2i(9, 0), Vector2i(10, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k5upb"]
+resource_name = "Riffle_con"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_imfro"]
+resource_name = "Rockets"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+}
+
+[sub_resource type="Animation" id="Animation_hp124"]
+resource_name = "Standby"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [53, 54, 55, 56, 57, 58]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_imvo1"]
+_data = {
+"Idlle": SubResource("Animation_a1qoa"),
+"Move_L": SubResource("Animation_o513o"),
+"Move_L_con": SubResource("Animation_p4wtq"),
+"Move_R": SubResource("Animation_vs4e0"),
+"Move_R_con": SubResource("Animation_fu5i2"),
+"RESET": SubResource("Animation_p2y0t"),
+"Recover": SubResource("Animation_kjv60"),
+"Riffle": SubResource("Animation_deuqm"),
+"Riffle_con": SubResource("Animation_k5upb"),
+"Rockets": SubResource("Animation_imfro"),
+"Standby": SubResource("Animation_hp124")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kvce5"]
+animation = &"Idlle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_04fop"]
+animation = &"Move_L"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w7pu2"]
+animation = &"Move_L_con"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vc08k"]
+animation = &"Move_R"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n0366"]
+animation = &"Move_R_con"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pun0s"]
+animation = &"Recover"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t5myu"]
+animation = &"Riffle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xqjll"]
+animation = &"Riffle_con"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_88j6k"]
+animation = &"Rockets"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_muuvf"]
+animation = &"Standby"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i7aqk"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gi5hm"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vqel0"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eerbn"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_epuuy"]
+advance_mode = 2
+advance_condition = &"is_recover"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wo7rv"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p0331"]
+advance_mode = 2
+advance_condition = &"is_idlle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3adoe"]
+advance_mode = 2
+advance_condition = &"is_idlle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mmjvt"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6usyr"]
+advance_mode = 2
+advance_condition = &"is_idlle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vf8bv"]
+advance_mode = 2
+advance_condition = &"is_idlle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xpkab"]
+advance_mode = 2
+advance_condition = &"is_riffle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xehvu"]
+advance_mode = 2
+advance_condition = &"is_riffle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3ldd0"]
+advance_mode = 2
+advance_condition = &"is_riffle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bkpfb"]
+advance_mode = 2
+advance_condition = &"is_riffle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vryxw"]
+advance_mode = 2
+advance_condition = &"is_idlle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wdhf7"]
+advance_mode = 2
+advance_condition = &"is_move_l"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7u8ko"]
+advance_mode = 2
+advance_condition = &"is_move_r"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qilhs"]
+advance_mode = 2
+advance_condition = &"is_rockets"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c8vjt"]
+advance_mode = 2
+advance_condition = &"is_riffle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_503ft"]
+advance_mode = 2
+advance_condition = &"is_rockets"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p82vw"]
+advance_mode = 2
+advance_condition = &"is_rockets"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8m6jq"]
+advance_mode = 2
+advance_condition = &"is_rockets"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2ydfq"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rsxh4"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_smaj1"]
+advance_mode = 2
+advance_condition = &"is_idlle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_th6xq"]
+advance_mode = 2
+advance_condition = &"is_move_r"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6gnov"]
+advance_mode = 2
+advance_condition = &"is_move_l"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hwnpr"]
+advance_mode = 2
+advance_condition = &"is_move_l"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hgyi7"]
+advance_mode = 2
+advance_condition = &"is_move_r"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5pkrs"]
+advance_mode = 2
+advance_condition = &"global_position"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yr41v"]
+states/End/position = Vector2(1248, 127)
+states/Idlle/node = SubResource("AnimationNodeAnimation_kvce5")
+states/Idlle/position = Vector2(771, 317)
+states/Move_L/node = SubResource("AnimationNodeAnimation_04fop")
+states/Move_L/position = Vector2(454, 64)
+states/Move_L_con/node = SubResource("AnimationNodeAnimation_w7pu2")
+states/Move_L_con/position = Vector2(933, 91)
+states/Move_R/node = SubResource("AnimationNodeAnimation_vc08k")
+states/Move_R/position = Vector2(158, 591)
+states/Move_R_con/node = SubResource("AnimationNodeAnimation_n0366")
+states/Move_R_con/position = Vector2(799, 649)
+states/Recover/node = SubResource("AnimationNodeAnimation_pun0s")
+states/Recover/position = Vector2(1119, 200)
+states/Riffle/node = SubResource("AnimationNodeAnimation_t5myu")
+states/Riffle/position = Vector2(258, 228)
+states/Riffle_con/node = SubResource("AnimationNodeAnimation_xqjll")
+states/Riffle_con/position = Vector2(303, 343)
+states/Rockets/node = SubResource("AnimationNodeAnimation_88j6k")
+states/Rockets/position = Vector2(1299, 636)
+states/Standby/node = SubResource("AnimationNodeAnimation_muuvf")
+states/Standby/position = Vector2(1189, 348)
+transitions = ["Start", "Move_L", SubResource("AnimationNodeStateMachineTransition_i7aqk"), "Start", "Move_R", SubResource("AnimationNodeStateMachineTransition_gi5hm"), "Move_L", "Move_L_con", SubResource("AnimationNodeStateMachineTransition_vqel0"), "Move_R", "Move_R_con", SubResource("AnimationNodeStateMachineTransition_eerbn"), "Standby", "Recover", SubResource("AnimationNodeStateMachineTransition_epuuy"), "Rockets", "Standby", SubResource("AnimationNodeStateMachineTransition_wo7rv"), "Move_L_con", "Idlle", SubResource("AnimationNodeStateMachineTransition_p0331"), "Move_R_con", "Idlle", SubResource("AnimationNodeStateMachineTransition_3adoe"), "Recover", "Idlle", SubResource("AnimationNodeStateMachineTransition_mmjvt"), "Move_L", "Idlle", SubResource("AnimationNodeStateMachineTransition_6usyr"), "Move_R", "Idlle", SubResource("AnimationNodeStateMachineTransition_vf8bv"), "Move_L_con", "Riffle", SubResource("AnimationNodeStateMachineTransition_xpkab"), "Move_R_con", "Riffle", SubResource("AnimationNodeStateMachineTransition_xehvu"), "Move_L", "Riffle", SubResource("AnimationNodeStateMachineTransition_3ldd0"), "Move_R", "Riffle", SubResource("AnimationNodeStateMachineTransition_bkpfb"), "Riffle", "Idlle", SubResource("AnimationNodeStateMachineTransition_vryxw"), "Idlle", "Move_L", SubResource("AnimationNodeStateMachineTransition_wdhf7"), "Idlle", "Move_R", SubResource("AnimationNodeStateMachineTransition_7u8ko"), "Idlle", "Rockets", SubResource("AnimationNodeStateMachineTransition_qilhs"), "Idlle", "Riffle", SubResource("AnimationNodeStateMachineTransition_c8vjt"), "Riffle", "Rockets", SubResource("AnimationNodeStateMachineTransition_503ft"), "Move_L_con", "Rockets", SubResource("AnimationNodeStateMachineTransition_p82vw"), "Move_R_con", "Rockets", SubResource("AnimationNodeStateMachineTransition_8m6jq"), "Start", "Idlle", SubResource("AnimationNodeStateMachineTransition_2ydfq"), "Riffle", "Riffle_con", SubResource("AnimationNodeStateMachineTransition_rsxh4"), "Riffle_con", "Idlle", SubResource("AnimationNodeStateMachineTransition_smaj1"), "Riffle", "Move_R", SubResource("AnimationNodeStateMachineTransition_th6xq"), "Riffle", "Move_L", SubResource("AnimationNodeStateMachineTransition_6gnov"), "Riffle_con", "Move_L", SubResource("AnimationNodeStateMachineTransition_hwnpr"), "Riffle_con", "Move_R", SubResource("AnimationNodeStateMachineTransition_hgyi7"), "Riffle_con", "Rockets", SubResource("AnimationNodeStateMachineTransition_5pkrs")]
+graph_offset = Vector2(-228, 186)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aov78"]
+radius = 358.001
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bm7rv"]
+size = Vector2(65, 118)
+
+[node name="Owl" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 29
+motion_mode = 1
+slide_on_ceiling = false
+floor_constant_speed = true
+script = ExtResource("1_ylmtn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vvrl0")
+hframes = 15
+vframes = 4
+frame = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_up6hf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_imvo1")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_imvo1")
+}
+tree_root = SubResource("AnimationNodeStateMachine_yr41v")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/global_position = false
+parameters/conditions/is_idlle = false
+parameters/conditions/is_move_l = false
+parameters/conditions/is_move_r = false
+parameters/conditions/is_recover = false
+parameters/conditions/is_riffle = false
+parameters/conditions/is_rockets = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("CircleShape2D_aov78")
+
+[node name="muzzle" type="Node2D" parent="."]
+position = Vector2(-59, -8)
+
+[node name="mozzle_r" type="Node2D" parent="."]
+position = Vector2(29, -1)
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_bm7rv")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

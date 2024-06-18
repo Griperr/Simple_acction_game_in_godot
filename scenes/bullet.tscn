@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://dg2v4f0d1e1lo"]
+
+[ext_resource type="Texture2D" uid="uid://bjgcvmsd745a7" path="res://sheets/pocisk_mc.png" id="1_1mphh"]
+[ext_resource type="Script" path="res://scrips/bullet.gd" id="1_x1pn8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sq4hg"]
+radius = 6.0
+height = 24.0
+
+[sub_resource type="Animation" id="Animation_vkqan"]
+resource_name = "Animation"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_g7whi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_adklc"]
+_data = {
+"Animation": SubResource("Animation_vkqan"),
+"RESET": SubResource("Animation_g7whi")
+}
+
+[node name="bullet" type="Area2D" groups=["Bullet_player"]]
+collision_layer = 32
+collision_mask = 3
+script = ExtResource("1_x1pn8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10, 2)
+texture = ExtResource("1_1mphh")
+hframes = 4
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_sq4hg")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(9.5, 0)
+scale = Vector2(1.05, 0.6)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_adklc")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
